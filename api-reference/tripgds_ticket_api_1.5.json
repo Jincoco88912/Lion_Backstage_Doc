@@ -1,0 +1,219 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "全球目的地商品分銷系統",
+    "description": "提供串接全球目的地商品分銷系統說明",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://gds-sandbox.ticketgds.com/v1.5",
+      "description": "sandbox 測試開發環境"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/currency": {
+      "get": {
+        "tags": [
+          "通用"
+        ],
+        "summary": "01 取得匯率",
+        "description": "取得匯率",
+        "responses": {
+          "200": {
+            "description": "成功回應",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurrencyResponse"
+                },
+                "examples": {
+                  "example-1": {
+                    "$ref": "#/components/examples/CurrencyExample"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CurrencyResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CurrencyResponse_result"
+            }
+          },
+          "api_status": {
+            "type": "integer",
+            "description": "API 狀態碼 (0)"
+          },
+          "api_version": {
+            "type": "string",
+            "description": "API 版本 (1.5)"
+          }
+        }
+      },
+      "CurrencyResponse_result": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string",
+            "description": "原幣別"
+          },
+          "to": {
+            "type": "string",
+            "description": "目標幣別"
+          },
+          "rate": {
+            "type": "number",
+            "description": "匯率值（支援至小數點後4位）"
+          }
+        }
+      }
+    },
+    "examples": {
+      "CurrencyExample": {
+        "summary": "Currency Response Example",
+        "value": {
+          "result": [
+            {
+              "from": "IDR",
+              "to": "NTD",
+              "rate": 0.0023
+            },
+            {
+              "from": "CAD",
+              "to": "NTD",
+              "rate": 21.35
+            },
+            {
+              "from": "HKD",
+              "to": "NTD",
+              "rate": 3.894
+            },
+            {
+              "from": "GBP",
+              "to": "NTD",
+              "rate": 37.26
+            },
+            {
+              "from": "INR",
+              "to": "NTD",
+              "rate": 0.393
+            },
+            {
+              "from": "PHP",
+              "to": "NTD",
+              "rate": 0.664
+            },
+            {
+              "from": "SGD",
+              "to": "NTD",
+              "rate": 21.2
+            },
+            {
+              "from": "JPY",
+              "to": "NTD",
+              "rate": 0.2837
+            },
+            {
+              "from": "AUD",
+              "to": "NTD",
+              "rate": 19.45
+            },
+            {
+              "from": "USD",
+              "to": "NTD",
+              "rate": 29.98
+            },
+            {
+              "from": "NOK",
+              "to": "NTD",
+              "rate": 2.924
+            },
+            {
+              "from": "MYR",
+              "to": "NTD",
+              "rate": 7.402
+            },
+            {
+              "from": "TWD",
+              "to": "NTD",
+              "rate": 1
+            },
+            {
+              "from": "EUR",
+              "to": "NTD",
+              "rate": 32.53
+            },
+            {
+              "from": "MOP",
+              "to": "NTD",
+              "rate": 3.901
+            },
+            {
+              "from": "AED",
+              "to": "NTD",
+              "rate": 8.149
+            },
+            {
+              "from": "KOW",
+              "to": "NTD",
+              "rate": 0.0264
+            },
+            {
+              "from": "CHF",
+              "to": "NTD",
+              "rate": 30.8
+            },
+            {
+              "from": "THB",
+              "to": "NTD",
+              "rate": 0.946
+            },
+            {
+              "from": "SEK",
+              "to": "NTD",
+              "rate": 3.1
+            },
+            {
+              "from": "RMB",
+              "to": "NTD",
+              "rate": 4.237
+            },
+            {
+              "from": "DKK",
+              "to": "NTD",
+              "rate": 4.335
+            },
+            {
+              "from": "VND",
+              "to": "NTD",
+              "rate": 0.0015
+            }
+          ],
+          "api_status": 0,
+          "api_version": "1.5"
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}
